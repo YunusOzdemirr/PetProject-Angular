@@ -34,15 +34,7 @@ export class UserService {
       photoURL: user.photoURL,
     });
   }
-  GetUsersList() {
-    this.usersRef = this.db.list(this.dbPath);
-    console.log(this.usersRef);
-    // return this.usersRef;
 
-  }
-  getAll(): AngularFireList<User> {
-    return this.usersRef;
-  }
   getUserById(userId: string) {
     const userData = this.angularFirestore.doc('users/' + userId).valueChanges();
     return userData;

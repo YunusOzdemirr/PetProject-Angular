@@ -12,8 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 
 export class UserListComponent implements OnInit {
-  keyField: string
-  users: any;
+
   userList: User[];
   p: number = 1;
   User: Observable<User[]>;

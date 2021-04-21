@@ -1,1 +1,47 @@
-<p>pet-list works!</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Evcil Hayvan Listesi</h1>
+    <a routerLink="/view-pet" class="btn btn-success" *ngIf="hideWhenNoPet">
+        <i class="fas fa-plus custom-fa-plus"></i>
+        Evcil Hayvan ekle
+    </a>
+</div>
+
+<div class="pricing-header mx-auto">
+
+    <div class="no-data text-center" *ngIf="noData">
+
+        <p class="nodata-msg">Henüz bir evcil hayvan eklenmedi!</p>
+        <a routerLink="/register-user" class="btn btn-success">
+            <i class="fas fa-plus custom-fa-plus"></i>
+            Evcil Hayvan ekle
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+            <thead>
+                <tr>
+                    <th scope="col">Evcil Hayvan Id</th>
+                    <th scope="col">Evcil Hayvan Adı</th>
+                    <th scope="col">Sahip Adı</th>
+                    <th scope="col">Fotoğraf</th>
+                    <th class="text-center" scope="col">Düzenle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pet of petList | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+                    <th scope="row">{{pet.id}}</th>
+                    <td>{{pet.name}}</td>
+                    <td>{{pet.userName}}</td>
+                    <td>{{pet.photoUrl}}</td>
+                    <td class="text-center action-block">
+                        <button type="submit" class="btn btn-primary" routerLink="/edit-user/{{pet.id}}"></button>
+
+                        <button type="submit" class="btn btn-primary" (click)=" deleteUser(pet)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="p = $event" AutoHide="true" Responsive="true"></pagination-controls>
+</div>

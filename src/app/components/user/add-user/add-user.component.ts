@@ -25,11 +25,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAll();
     this.userForm();
-    // if (this.activatedRoute.snapshot.params['id']) {
-    //   this.userId = this.activatedRoute.snapshot.paramMap.get('id');
-    // }
     if (this.userId) {
       this.title = 'Edit';
       this.userService.getUserById(this.userId).subscribe(

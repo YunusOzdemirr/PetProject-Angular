@@ -20,7 +20,6 @@ export class PetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.petService.getAll();
     this.petForm();
     //this.petService.getPetsList();
   }
