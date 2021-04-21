@@ -1,1 +1,50 @@
-<p>user-list works!</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Kullanıcı Listesi</h1>
+    <a routerLink="/register-user" class="btn btn-success" *ngIf="hideWhenNoUser">
+        <i class="fas fa-plus custom-fa-plus"></i>
+        Kullanıcı ekle
+    </a>
+</div>
+
+<div class="pricing-header mx-auto">
+
+    <div class="no-data text-center" *ngIf="noData">
+
+        <p class="nodata-msg">Henüz bir kullanıcı eklenmedi!</p>
+        <a routerLink="/register-user" class="btn btn-success">
+            <i class="fas fa-plus custom-fa-plus"></i>
+            Kullanıcı ekle
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+            <thead>
+                <tr>
+                    <th scope="col">Kullanıcı Id</th>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Evcil Hayvan Adı</th>
+                    <th scope="col">Fotoğraf</th>
+                    <th class="text-center" scope="col">Düzenle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userList | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.petName}}</td>
+                    <td>{{user.photoURL}}</td>
+                    <td class="text-center action-block">
+                        <button type="submit" class="btn btn-primary" routerLink="/edit-user/{{user.id}}"></button>
+
+                        <button type="submit" class="btn btn-primary" (click)=" deleteUser(user)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="p = $event" AutoHide="true" Responsive="true"></pagination-controls>
+
+</div>

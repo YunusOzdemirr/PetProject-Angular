@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -16,27 +17,14 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { PetDetailComponent } from './components/pet/pet-detail/pet-detail.component';
 import { ReactiveFormsModule } from "@angular/forms";
-
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { PetListComponent } from './components/pet/pet-list/pet-list.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { UserListComponent } from './components/user/user-list/user-list.component';
-import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { PetUpdateComponent } from './components/pet/pet-update/pet-update.component';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/register-user', pathMatch: 'full' },
-  { path: 'register-user', component: AddUserComponent },
-  { path: 'view-users', component: UserListComponent },
-  { path: 'edit-user/:id', component: UserUpdateComponent },
-  { path: 'detail-user/:id', component: UserDetailComponent },
-  { path: 'add-pet', component: PetComponent },
-  { path: 'view-pets', component: PetListComponent },
-  { path: 'edit-pet/:id', component: PetUpdateComponent },
-  { path: 'detail-pet/:id', component: PetDetailComponent },
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +34,6 @@ const routes: Routes = [
     PetListComponent,
     AddUserComponent,
     UserListComponent,
-    UserDetailComponent,
     PetUpdateComponent,
     UserUpdateComponent,
 
@@ -60,15 +47,13 @@ const routes: Routes = [
     AngularFireStorageModule, // storage
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-full-width'
+    }),
     NgxPaginationModule,
+    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: PetComponent },
-      { path: 'pet/:petId', component: PetDetailComponent },
-    ])
-
   ],
   providers: [],
   bootstrap: [AppComponent]

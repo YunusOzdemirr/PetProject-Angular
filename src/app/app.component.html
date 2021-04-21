@@ -4,13 +4,13 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/register-student">
 
-    <span class="dasboard-text">PetProject</span>
+    <span class="dasboard-text">Pet Project</span>
   </a>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" routerLink="/register-student">
+      <a class="nav-link" routerLink="/register-user">
         <span class="user-image" style="background-image: url('assets/user.jpg')"></span>
-        Hello Ajay
+        Hello Yunus
       </a>
     </li>
   </ul>
@@ -22,7 +22,6 @@
     <nav class="col-md-2 d-md-block bg-light sidebar" style="margin-top: 70px;">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-
           <!-- routerLink="/register-student" to navigate to view-students component -->
           <li class="nav-item">
             <a class="nav-link" routerLink="/register-user" routerLinkActive="active">
@@ -76,16 +75,14 @@
         </ul>
       </div>
     </nav>
-
     <!-- Main content -->
     <main role="main" style="margin-top: 50px;" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="inner-adjust">
 
         <!-- Use router template to show the components for which router service is activated -->
         <router-outlet></router-outlet>
-
+        <!-- <app-add-user></app-add-user> -->
       </div>
     </main>
-
   </div>
 </div>

@@ -1,56 +1,52 @@
-<div class="spinner-border" role="status">
-  <span class="visually-hidden"></span>
-</div>
-<div class="mb-3">
-  <label for="filterText" class="form-label">Ürün Ara</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
-    placeholder="Arama İfadesi Giriniz" />
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Hayvan Kayıt</h1>
+  <p class="custom-text">Kayıt İşlemleri <strong>Pet management system</strong> built with <strong>Angular 10
+      and Firebase</strong></p>
 </div>
 
+<!-- Student form -->
+<form [formGroup]="petsForm" (ngSubmit)="submitPetData()" novalidate>
+  <div class="row">
+    <div class="col-lg-5 col-md-12 col-sm-12">
+      <div class="row">
 
-<div *ngIf="filterText.length > 2" class="alert alert-primary">
-  {{ filterText }} aradınız
-</div>
-<!-- <table class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Hayvan Adı</th>
-      <th>Hayvan Türü</th>
-      <th>Sahip Adı</th>
-      <th></th>
-      <th>Fotoğraf</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let pet of pets | filterPipe: filterText">
-      <td>{{ pet.id }}</td>
-      <td [title]="pet.name + ' details'" [routerLink]="['/pets', pet.id]">{{ pet.name | uppercase }}</td>
-      <td>{{ pet.animalType }}</td>
-      <td>{{ pet.owner }}</td>
-      <td>{{ pet.photoUrl | currency }}</td>
-      <td>
-        <button (click)="takePet(pet)" type="button">Detay</button>
-      </td>
-    </tr>
-  </tbody>
-</table> -->
+        <div class="col-md-12 mb-3">
+          <label>İsim</label>
+          <input type="text" formControlName="name" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="name?.touched && name?.invalid" class="error"><sup>*</sup>Lütfen isminizi giriniz
+          </p>
+          <p *ngIf="name?.errors?.minlength" class="error"><sup>*</sup>İsim alanı 2 karakterden büyük olmalı</p>
+        </div>
 
-<div class="submit-form">
-  <div>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" [(ngModel)]="pet.name" class="form-control" id="name" name="name" />
+        <!-- <div class="col-md-12 mb-3">
+          <label>E-mail</label>
+          <input type="text" formControlName="email" class="form-control">
+        </div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label>Hayvan Türü</label>
+          <input type="text" formControlName="animalType" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="animalType?.errors?.minlength" class="error"><sup>*</sup>Lütfen geçerli bir Hayvan Türü giriniz</p>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label>Fotoğraf</label>
+          <input type="text" formControlName="photoUrl" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>bir resim url giriniz</p>
+        </div>
+
+      </div>
+
+      <div class="form-group text-right">
+        <button type="button" class="btn btn-warning mr-2" (click)="ResetForm()">Sıfırla</button>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+      </div>
+      <!-- [disabled]="!petsForm.valid" -->
     </div>
-
-
-    <!-- <div class="form-group">
-      <label for="description">Description</label>
-      <input class="form-control" id="description"  name="description" />
-    </div> -->
-
-    <button (click)="onSubmit()" class="btn btn-success">Submit</button>
   </div>
-  <!-- <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
-
-  </form> -->
+</form><!-- Student form ends-->

@@ -21,6 +21,9 @@ export class PetService {
   createPet(pet: Pet) {
     return this.angularFirestore.collection('pets').add({
       name: pet.name,
+      animalType: pet.animalType,
+      userName: pet.userName,
+      photoUrl: pet.photoUrl
     });
   }
   getAll(): AngularFireList<Pet> {
