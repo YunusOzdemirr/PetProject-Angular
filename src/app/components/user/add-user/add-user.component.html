@@ -1,0 +1,56 @@
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Kullanıcı Kayıt</h1>
+  <p class="custom-text">Kayıt İşlemleri <strong>Pet management system</strong> built with <strong>Angular 10
+      and Firebase</strong></p>
+</div>
+
+<!-- Student form -->
+<form [formGroup]="usersForm" (ngSubmit)="submitStudentData()" novalidate>
+  <div class="row">
+    <div class="col-lg-5 col-md-12 col-sm-12">
+      <div class="row">
+
+        <div class="col-md-12 mb-3">
+          <label>Name</label>
+          <input type="text" formControlName="name" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="name?.touched && name?.invalid" class="error"><sup>*</sup>Please enter atleast first name
+          </p>
+          <p *ngIf="name?.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+        </div>
+
+        <!-- <div class="col-md-12 mb-3">
+          <label>E-mail</label>
+          <input type="text" formControlName="email" class="form-control">
+        </div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label>Email</label>
+          <input type="email" formControlName="email" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="email?.touched && email?.invalid" class="error"><sup>*</sup>Lütfen bir email giriniz</p>
+          <p *ngIf="email?.errors?.pattern" class="error"><sup>*</sup>Lütfen doğru bir email giriniz</p>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label>photoUrl</label>
+          <input type="text" formControlName="mobileNumber" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>Please provide contact
+            number</p>
+          <p *ngIf="photoUrl?.errors?.pattern" class="error"><sup>*</sup>Use numbers only
+            number</p>
+        </div>
+
+      </div>
+
+      <div class="form-group text-right">
+        <button type="button" class="btn btn-warning mr-2" (click)="ResetForm()">Sıfırla</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!usersForm.valid">Kayıt Ol</button>
+      </div>
+
+    </div>
+  </div>
+</form><!-- Student form ends-->

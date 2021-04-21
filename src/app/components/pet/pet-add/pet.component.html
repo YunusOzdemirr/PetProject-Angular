@@ -1,0 +1,56 @@
+<div class="spinner-border" role="status">
+  <span class="visually-hidden"></span>
+</div>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürün Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+    placeholder="Arama İfadesi Giriniz" />
+</div>
+
+
+<div *ngIf="filterText.length > 2" class="alert alert-primary">
+  {{ filterText }} aradınız
+</div>
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Hayvan Adı</th>
+      <th>Hayvan Türü</th>
+      <th>Sahip Adı</th>
+      <th></th>
+      <th>Fotoğraf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pet of pets | filterPipe: filterText">
+      <td>{{ pet.id }}</td>
+      <td [title]="pet.name + ' details'" [routerLink]="['/pets', pet.id]">{{ pet.name | uppercase }}</td>
+      <td>{{ pet.animalType }}</td>
+      <td>{{ pet.owner }}</td>
+      <td>{{ pet.photoUrl | currency }}</td>
+      <td>
+        <button (click)="takePet(pet)" type="button">Detay</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+<div class="submit-form">
+  <div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" [(ngModel)]="pet.name" class="form-control" id="name" name="name" />
+    </div>
+
+
+    <!-- <div class="form-group">
+      <label for="description">Description</label>
+      <input class="form-control" id="description"  name="description" />
+    </div> -->
+
+    <button (click)="onSubmit()" class="btn btn-success">Submit</button>
+  </div>
+  <!-- <form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+
+  </form> -->
