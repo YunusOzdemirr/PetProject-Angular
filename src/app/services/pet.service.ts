@@ -14,6 +14,7 @@ export class PetService {
   //or
   constructor(public angularFirestore: AngularFirestore, private db: AngularFireDatabase) {
     this.petsRef = db.list(this.dbPath);
+
   }
   // createPet(pet: Pet): any {
   //   return this.petsRef.add(pet);

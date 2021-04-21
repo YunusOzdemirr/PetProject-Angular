@@ -20,10 +20,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { PetListComponent } from './components/pet/pet-list/pet-list.component';
-import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { PetUpdateComponent } from './components/pet/pet-update/pet-update.component';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,11 @@ import { UserUpdateComponent } from './components/user/user-update/user-update.c
     FilterPipePipe,
     PetDetailComponent,
     PetListComponent,
-    AddUserComponent,
     UserListComponent,
     PetUpdateComponent,
     UserUpdateComponent,
+    LoginComponent,
+    SignUpComponent,
 
   ],
   imports: [

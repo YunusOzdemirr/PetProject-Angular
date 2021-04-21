@@ -6,12 +6,13 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class AddUserComponent implements OnInit {
-  public usersForm: FormGroup;
+export class SignUpComponent implements OnInit {
+
+  usersForm: FormGroup;
   userId: string;
   title = "Create";
   user: User;
@@ -80,4 +81,5 @@ export class AddUserComponent implements OnInit {
     this.toastr.success(this.usersForm.controls['name'].value + ' successfully added!'); // Show success message when data is successfully submited
     this.ResetForm();  // Reset form when clicked on reset button
   };
+
 }
