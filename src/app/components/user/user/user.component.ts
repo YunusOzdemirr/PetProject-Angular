@@ -33,7 +33,10 @@ export class UserComponent implements OnInit {
 
   createForm(name: any) {
     this.profileForm = this.fb.group({
-      name: [name, Validators.required]
+      name: [name, Validators.required],
+      photoURl: [name, Validators.required],
+      email: [name, Validators.required],
+      password: [name, Validators.required]
     });
   }
 

@@ -11,8 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
+
   constructor(private authService: AuthService, private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder) {
+    this.createForm();
+  }
 
   ngOnInit(): void {
   }
@@ -26,7 +29,7 @@ export class LoginComponent implements OnInit {
   tryLogin(value: any) {
     this.authService.doLogin(value)
       .then(res => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/user']);
       },
         err => {
           console.log(err);
