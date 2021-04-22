@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
+import firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
   private dbPath = '/users';
   usersRef: AngularFireList<User>;
+
 
   constructor(public angularFirestore: AngularFirestore, private db: AngularFireDatabase) {
     this.usersRef = db.list(this.dbPath);
@@ -48,5 +50,29 @@ export class UserService {
 
   delete(key: string) {
     return this.angularFirestore.doc('users/' + key).delete();
+  }
+
+  getCurrentUser() {
+    return new Promise<any>((resolve, reject) => {
+      var user = firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          resolve(user);
+        } else {
+          reject('No user logged in');
+        }
+      })
+    })
+  }
+
+  updateCurrentUser(value: any) {
+    return new Promise<any>((resolve, reject) => {
+      var user = firebase.auth().currentUser;
+      user?.updateProfile({
+        displayName: value.name,
+        photoURL: user.photoURL
+      }).then(res => {
+        resolve(res);
+      }, err => reject(err))
+    })
   }
 }

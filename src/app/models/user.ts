@@ -7,4 +7,12 @@ export class User {
   password: string;
   photoURL: string;
   petName: string;
+  constructor() {
+    this.id = "";
+    this.name = "";
+    this.email = "";
+    this.password = "";
+    this.photoURL = "";
+    this.petName = "";
+  }
 }

@@ -1,61 +1,67 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of as observableOf } from 'rxjs';
 import { SignUpComponent } from '../components/user/sign-up/sign-up.component';
 import { User } from '../models/user';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
+import firebase from 'firebase/app';
+
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
+    uid: any;
+    userData: any;
+    user: User;
 
-  userData: any;
-  user: User;
-  constructor(public afAuth: AngularFireAuth,
-    private route: ActivatedRoute,
-    private router: Router,
-    private db: AngularFirestore) {
-    this.userData = this.afAuth.authState.pipe(
-      switchMap(user => {
-        // If the user is logged in, return the user details.
-        if (user) {
-          return this.db.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          // If the user is NOT logged in, return null.
-          return of(null);
-        }
-      })
-    );
-  }
+    constructor(public afAuth: AngularFireAuth,
+        private route: ActivatedRoute,
+        private router: Router,
+        private db: AngularFireDatabase) {
+        // this.userData = this.afAuth.authState.pipe(
+        //     switchMap(user => {
+        //         if (user) {
+        //             return this.db.doc<User>(`users/${user.uid}`).valueChanges();
+        //         } else {
+        //             return of(null);
+        //         }
+        //     })
+        // );
+    }
+    doRegister(value: any) {
+        return new Promise<any>((resolve, reject) => {
+            firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+                .then(res => {
+                    resolve(res);
+                }, err => reject(err))
+        })
+    }
 
-  async login() {
+    doLogin(value: any) {
+        return new Promise<any>((resolve, reject) => {
+            firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+                .then(res => {
+                    resolve(res);
+                }, err => reject(err))
+        })
+    }
 
-    // Store the return URL in localstorage, to be used once the user logs in successfully
-    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || this.router.url;
-    localStorage.setItem('returnUrl', returnUrl);
-
-    const credential = await this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    return this.updateUserData(credential.user);
-  }
-
-  async logout() {
-    await this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/']);
-    });
-  }
-  private updateUserData(user: User) {
-    const userRef = this.db.doc(`appusers/${user.id}`);
-    const data = {
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      photoURL: user.photoURL
-    };
-    return userRef.set(data, { merge: true });
-  }
+    doLogout() {
+        return new Promise<void>((resolve, reject) => {
+            if (firebase.auth().currentUser) {
+                this.afAuth.signOut();
+                resolve();
+            }
+            else {
+                reject();
+            }
+        });
+    }
 }
+
+

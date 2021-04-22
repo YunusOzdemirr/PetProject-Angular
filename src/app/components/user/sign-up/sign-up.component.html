@@ -1,10 +1,10 @@
+<!--
 <div class="pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Kullanıcı Kayıt</h1>
     <p class="custom-text">Kayıt İşlemleri <strong>Pet management system</strong> built with <strong>Angular 10
             and Firebase</strong></p>
 </div>
 
-<!-- Student form -->
 <form [formGroup]="usersForm" (ngSubmit)="submitUserData()" novalidate>
     <div class="row">
         <div class="col-lg-5 col-md-12 col-sm-12">
@@ -13,7 +13,6 @@
                 <div class="col-md-12 mb-3">
                     <label>İsim</label>
                     <input type="text" formControlName="name" class="form-control" required>
-                    <!-- Showing errors using getter method -->
                     <p *ngIf="name?.touched && name?.invalid" class="error"><sup>*</sup>Lütfen isminizi giriniz
                     </p>
                     <p *ngIf="name?.errors?.minlength" class="error"><sup>*</sup>İsim alanı 2 karakterden büyük olmalı
@@ -26,14 +25,12 @@
                 <div class="col-md-12 mb-3">
                     <label>Email</label>
                     <input type="email" formControlName="email" class="form-control" required>
-                    <!-- Showing errors using getter method -->
                     <p *ngIf="email?.errors?.pattern" class="error"><sup>*</sup>Lütfen geçerli bir email giriniz</p>
                 </div>
 
                 <div class="col-md-12 mb-3">
                     <label>Fotoğraf</label>
                     <input type="text" formControlName="photoURL" class="form-control" required>
-                    <!-- Showing errors using getter method -->
                     <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>bir resim url giriniz
                     </p>
                 </div>
@@ -47,4 +44,52 @@
 
         </div>
     </div>
-</form>
+</form>  -->
+
+
+
+
+<h1 class="header">Create an account with Firebase or Social Providers</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form [formGroup]="registerForm">
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" formControlName="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <label class="error">{{errorMessage}}</label>
+                    <label class="success">{{successMessage}}</label>
+                </div>
+                <button type="submit" (click)="tryRegister(registerForm.value)"
+                    class="btn btn-default">Register</button>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <button type="button" class="btn btn-primary btn-block" (click)="tryFacebookLogin()">Register with
+                Facebook</button>
+        </div>
+    </div> -->
+    <!-- <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Register with
+                Google</button>
+        </div>
+    </div> -->
+    <!-- <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <button type="button" class="btn btn-info btn-block" (click)="tryTwitterLogin()">Register with
+                Twitter</button>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </div>
+</div>
