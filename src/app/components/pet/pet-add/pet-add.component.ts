@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { Pet } from "src/app/models/pet";
 import { User } from "src/app/models/user";
 import { PetService } from "src/app/services/pet.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-pet",
@@ -17,7 +18,8 @@ export class PetComponent implements OnInit {
   constructor(
     private petService: PetService,
     private fb: FormBuilder,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +57,9 @@ export class PetComponent implements OnInit {
       this.petsForm.controls["name"].value + " successfully added!"
     ); // Show success message when data is successfully submited
     this.ResetForm(); // Reset form when clicked on reset button
+  }
+  goBack() {
+    this.location.back();
   }
   // updateActive() {
   //   this.petService.updatePet(this.pet.id, {})

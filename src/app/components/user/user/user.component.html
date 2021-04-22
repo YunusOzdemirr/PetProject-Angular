@@ -4,12 +4,17 @@
 <br>
 <br>
 <br>
-
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-    <div class="container">
-        <a (click)="logout()" class="btn btn-primary">Logout</a>
+<div class="flex-container">
+    <div class="btn-group">
+        <!-- goBack() methos to back to previous component -->
+        <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
     </div>
-</nav>
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+        <div class="container">
+            <a (click)="logout()" class="btn btn-primary">Logout</a>
+        </div>
+    </nav>
+</div>
 <h1 class="header">Logged User Page</h1>
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
