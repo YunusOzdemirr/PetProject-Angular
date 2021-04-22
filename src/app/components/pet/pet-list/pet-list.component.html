@@ -24,6 +24,7 @@
                     <th scope="col">Evcil Hayvan Id</th>
                     <th scope="col">Evcil Hayvan Adı</th>
                     <th scope="col">Sahip Adı</th>
+                    <th scope="col">Hayvan Türü</th>
                     <th scope="col">Fotoğraf</th>
                     <th class="text-center" scope="col">Düzenle</th>
                 </tr>
@@ -33,6 +34,7 @@
                     <th scope="row">{{pet.id}}</th>
                     <td>{{pet.name}}</td>
                     <td>{{pet.userName}}</td>
+                    <td>{{pet.animalType}}</td>
                     <td>{{pet.photoUrl}}</td>
                     <td class="text-center action-block">
                         <button type="submit" class="btn btn-primary" routerLink="/edit-user/{{pet.id}}"></button>

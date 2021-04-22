@@ -10,5 +10,6 @@ export class AppComponent {
   constructor(private db: AngularFirestore) {
     const things = db.collection('pet').valueChanges();
     things.subscribe(console.log);
+
   }
 }

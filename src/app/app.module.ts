@@ -15,7 +15,6 @@ import { environment } from '../environments/environment';
 import { PetComponent } from './components/pet/pet-add/pet.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { RouterModule, Routes } from '@angular/router';
-import { PetDetailComponent } from './components/pet/pet-detail/pet-detail.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -25,19 +24,20 @@ import { PetUpdateComponent } from './components/pet/pet-update/pet-update.compo
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
+import { AddUserComponent } from './components/user/add-user/add-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PetComponent,
     FilterPipePipe,
-    PetDetailComponent,
     PetListComponent,
     UserListComponent,
     PetUpdateComponent,
     UserUpdateComponent,
     LoginComponent,
     SignUpComponent,
+    AddUserComponent,
 
   ],
   imports: [

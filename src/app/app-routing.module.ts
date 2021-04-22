@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PetComponent } from './components/pet/pet-add/pet.component';
-import { PetDetailComponent } from './components/pet/pet-detail/pet-detail.component';
 import { PetListComponent } from './components/pet/pet-list/pet-list.component';
 import { PetUpdateComponent } from './components/pet/pet-update/pet-update.component';
 import { LoginComponent } from './components/user/login/login.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
     { path: 'add-pet', component: PetComponent },
     { path: 'view-pets', component: PetListComponent },
     { path: 'edit-pet/:id', component: PetUpdateComponent },
-    { path: 'detail-pet/:id', component: PetDetailComponent },
 ];
 
 @NgModule({
