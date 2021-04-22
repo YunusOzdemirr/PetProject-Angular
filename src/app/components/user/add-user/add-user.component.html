@@ -1,13 +1,16 @@
 <br>
 <br>
 <br>
-<div class="pt-3 pb-2 mb-3 border-bottom">
+<div class="btn-group" style="margin-left:100px">
+    <!-- goBack() methos to back to previous component -->
+    <button class=" btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
+</div>
+<div class="pt-3 pb-2 mb-3 border-bottom" style="margin-left:100px">
     <h1 class="h2">Kullanıcı Kayıt</h1>
     <p class="custom-text">Kayıt İşlemleri <strong>Pet management system</strong> built with <strong>Angular 10
             and Firebase</strong></p>
 </div>
-
-<form [formGroup]="usersForm" (ngSubmit)="submitUserData()" novalidate>
+<form style="margin-left:100px" [formGroup]="usersForm" (ngSubmit)="submitUserData()" novalidate>
     <div class="row">
         <div class="col-lg-5 col-md-12 col-sm-12">
             <div class="row">
@@ -17,7 +20,8 @@
                     <input type="text" formControlName="name" class="form-control" required>
                     <p *ngIf="name?.touched && name?.invalid" class="error"><sup>*</sup>Lütfen isminizi giriniz
                     </p>
-                    <p *ngIf="name?.errors?.minlength" class="error"><sup>*</sup>İsim alanı 2 karakterden büyük olmalı
+                    <p *ngIf="name?.errors?.minlength" class="error"><sup>*</sup>İsim alanı 2 karakterden büyük
+                        olmalı
                     </p>
                 </div>
 
@@ -33,7 +37,8 @@
                 <div class="col-md-12 mb-3">
                     <label>Fotoğraf</label>
                     <input type="text" formControlName="photoURL" class="form-control" required>
-                    <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>bir resim url giriniz
+                    <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>bir resim url
+                        giriniz
                     </p>
                 </div>
 

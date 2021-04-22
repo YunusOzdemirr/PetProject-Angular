@@ -9,14 +9,15 @@ import { SignUpComponent } from "./components/authentication/sign-up/sign-up.com
 import { UserListComponent } from "./components/user/user-list/user-list.component";
 import { UserUpdateComponent } from "./components/user/user-update/user-update.component";
 import { UserComponent } from "./components/user/user/user.component";
+import { AddUserComponent } from "./components/user/add-user/add-user.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/register-user", pathMatch: "full" },
   { path: "register-user", component: SignUpComponent },
   { path: "general-page", component: GeneralPageComponent },
   { path: "user", component: UserComponent },
+  { path: "add-user", component: AddUserComponent },
   { path: "login-user", component: LoginComponent },
-  { path: "user", component: UserComponent },
   { path: "view-users", component: UserListComponent },
   { path: "edit-user/:id", component: UserUpdateComponent },
   { path: "add-pet", component: PetComponent },
