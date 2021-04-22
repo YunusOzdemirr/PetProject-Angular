@@ -39,12 +39,22 @@ export class PetService {
       }));
     return petList;
   }
-
-  update(key: string, value: any): any {
-    return this.petsRef.update(key, value);
-  }
-  delete(key: string) {
-    return this.angularFirestore.doc('pets/' + key).delete();
-  }
+  getCurrentPet() {
+    return new Promise<any>((resolve, reject) => {
+      var pet = function (pet: any) {
+        if (pet) {
+          resolve(pet);
+        } else {
+          reject('Böyle bir evcil hayvan yok');
+        }
+      }
+  })
+}
+update(key: string, value: any): any {
+  return this.petsRef.update(key, value);
+}
+delete (key: string) {
+  return this.angularFirestore.doc('pets/' + key).delete();
+}
 
 }

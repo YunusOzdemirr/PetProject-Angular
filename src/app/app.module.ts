@@ -26,6 +26,8 @@ import { LoginComponent } from './components/user/login/login.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { UserComponent } from './components/user/user/user.component';
+import { PetDetailComponent } from './components/pet/pet-detail/pet-detail.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { UserComponent } from './components/user/user/user.component';
     SignUpComponent,
     AddUserComponent,
     UserComponent,
+    PetDetailComponent,
+    NavbarComponent,
 
   ],
   imports: [
