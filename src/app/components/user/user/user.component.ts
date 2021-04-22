@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  user: User = new User();
+  user: User= new User() ;
   profileForm: FormGroup;
   constructor(
     public userService: UserService,
@@ -23,21 +23,22 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(routeData => {
-      let data = routeData['data'];
+      let data = routeData['users'];
       if (data) {
         this.user = data;
-        this.createForm(this.user.name);
+        console.log(data);
+        this.createForm(this.user.name,this.user.email,this.user.photoURL,this.user.password,this.user.petName);
       }
     })
-
   }
 
-  createForm(name: any) {
+  createForm(name: any, email:any,photoUrl:any,password:any,petName:any) {
     this.profileForm = this.fb.group({
       name: [name, Validators.required],
-      photoURl: [name, Validators.required],
-      email: [name, Validators.required],
-      password: [name, Validators.required]
+      photoURL: ['', Validators.required],
+      email: [email, Validators.required],
+      petName:['',Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -56,4 +57,5 @@ export class UserComponent implements OnInit {
         console.log("Logout error", error);
       });
   }
+
 }
