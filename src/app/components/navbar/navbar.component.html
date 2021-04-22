@@ -1,40 +1,41 @@
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" style="align-items: center;">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/register-student">
         <span class="dasboard-text" style="margin-left:5px"> Pet Project</span>
     </a>
-    <li class=" flex-container">
-
-        <a class="nav-link dropdown-toggle" *ngIf="!user.name" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Hello
-        </a>
-        <div class=" flex-container">
-            <div>
-                <img class="card-img-top image" src="https://avatars.githubusercontent.com/u/54598461?v=4"
-                    *ngIf="!user.photoURL" alt="User image">
-                <img class="card-img-top image" *ngIf="user.photoURL" src="user.photoUrl" alt="User image">
-            </div>
-            <div> <a class="nav-link" *ngIf="user.name" routerLink="/user">
-                    <span class="user-image" style="background-image: url('assets/user.png')">{{user.name}}</span>
-                </a>
-            </div>
-    <li class="nav-item dropdown">
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-                <a class="dropdown-item" routerLink="/register-user">
-                    Sign
-                    In
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-item">
-                    <span class="badge bg-secondary" routerLink="/login-user">LogIn
-                    </span>
-                    LogIn
-                </a>
-            </li>
-        </ul>
-    </li>
+    <div class=" flex-container" style="align-items: center"> 
+        <li class="nav-item dropdown" style="height:52px; align-items: center">
+            <a class="nav-link dropdown-toggle" *ngIf="!user.name" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Hello
+            </a>
+            <a class="nav-link dropdown-toggle" *ngIf="user.name" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{user.name}}
+            </a>
+            <ul class="dropdown-menu" *ngIf="!user.name" aria-labelledby="navbarDropdown">
+                <li>
+                    <a class="dropdown-item" routerLink="/register-user">
+                        Sign In
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" routerLink="/login-user">
+                        Log In
+                    </a>
+                </li>
+            </ul>
+            <ul class="dropdown-menu" *ngIf="user.name" aria-labelledby="navbarDropdown">
+                <li>
+                    <a class="dropdown-item" routerLink="/login-user">
+                        Log Out
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <div>
+            <img class="card-img-top image" src="https://avatars.githubusercontent.com/u/54598461?v=4"
+                *ngIf="!user.photoURL" alt="User image">
+            <img class="card-img-top image" *ngIf="user.photoURL" src="user.photoUrl" alt="User image">
+        </div>
     </div>
-    </li>
 </nav>
