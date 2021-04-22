@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit {
   tryLogin(value: any) {
     this.authService.doLogin(value)
       .then(res => {
-        this.errorMessage = 'bravo giriş yaptın';
         this.router.navigate(['/']);
-      }, err => {
-        console.log(err);
-        this.errorMessage = err.message;
-      })
+      },
+        err => {
+          console.log(err);
+          this.errorMessage = err.message;
+        })
   }
 
 }

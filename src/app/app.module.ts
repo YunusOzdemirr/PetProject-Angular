@@ -25,6 +25,7 @@ import { UserUpdateComponent } from './components/user/user-update/user-update.c
 import { LoginComponent } from './components/user/login/login.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
+import { UserComponent } from './components/user/user/user.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
     LoginComponent,
     SignUpComponent,
     AddUserComponent,
+    UserComponent,
 
   ],
   imports: [
