@@ -1,20 +1,40 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/register-student">
-
-        <span class="dasboard-text">Pet Project</span>
+        <span class="dasboard-text" style="margin-left:5px"> Pet Project</span>
     </a>
-    <ul class="navbar-nav px-3">
-        <div class="flex-container">
+    <li class=" flex-container">
+
+        <a class="nav-link dropdown-toggle" *ngIf="!user.name" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Hello
+        </a>
+        <div class=" flex-container">
             <div>
                 <img class="card-img-top image" src="https://avatars.githubusercontent.com/u/54598461?v=4"
                     *ngIf="!user.photoURL" alt="User image">
+                <img class="card-img-top image" *ngIf="user.photoURL" src="user.photoUrl" alt="User image">
             </div>
-            <div> <a class="nav-link" routerLink="/register-user">
-                    <span class="user-image" *ngIf="!user.name"
-                        style="background-image: url('assets/user.png')">{{user.name}}</span>
-                    Hello Let Sign In
+            <div> <a class="nav-link" *ngIf="user.name" routerLink="/user">
+                    <span class="user-image" style="background-image: url('assets/user.png')">{{user.name}}</span>
                 </a>
             </div>
-        </div>
-    </ul>
+    <li class="nav-item dropdown">
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+                <a class="dropdown-item" routerLink="/register-user">
+                    Sign
+                    In
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item">
+                    <span class="badge bg-secondary" routerLink="/login-user">LogIn
+                    </span>
+                    LogIn
+                </a>
+            </li>
+        </ul>
+    </li>
+    </div>
+    </li>
 </nav>

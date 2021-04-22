@@ -1,10 +1,18 @@
 img {
     width: 30px;
     height: 30px;
-    margin:5px;
+    margin: 5px;
     margin-right: 5px;
   }
   div.flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+  li.flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+  ul.flex-container {
     display: flex;
     flex-direction: row;
   }
