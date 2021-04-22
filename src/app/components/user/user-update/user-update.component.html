@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Edit Student Details</h1>
+    <h1 class="h2">Edit User Details</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
             <!-- goBack() methos to back to previous component -->
@@ -12,7 +12,6 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="pricing-header form-block mx-auto">
-
             <!-- Student's Edit Form -->
             <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
                 <div class="row">
@@ -29,7 +28,6 @@
                                     <sup>*</sup>isim 2 kelimeden fazla olmalı
                                 </p>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-md-12 mb-3">
@@ -45,13 +43,13 @@
                                 <label>Evcil Hayvan Adı</label>
                                 <input type="text" formControlName="petName" class="form-control" required>
                                 <p *ngIf="petName?.touched && petName?.invalid" class="error">
-                                    <sup>*</sup>Please provide contact number
+                                    <sup>*</sup>Lütfen geçerli bir hayvan adı girin
                                 </p>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>PhotoUrl</label>
-                                <input type="text" formControlName="photoUrl" class="form-control" required>
-                                <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error">
+                                <input type="text" formControlName="photoURL" class="form-control" required>
+                                <p *ngIf="photoURL?.touched && photoURL?.invalid" class="error">
                                     <sup>*</sup>Please provide contact number
                                 </p>
                             </div>
