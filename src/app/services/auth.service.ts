@@ -7,7 +7,7 @@ import {
 } from "@angular/fire/firestore";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, of as observableOf } from "rxjs";
-import { SignUpComponent } from "../components/user/sign-up/sign-up.component";
+import { SignUpComponent } from "../components/authentication/sign-up/sign-up.component";
 import { User } from "../models/user";
 import { map, switchMap, tap } from "rxjs/operators";
 import firebase from "firebase/app";

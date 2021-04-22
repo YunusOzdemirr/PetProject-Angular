@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   tryLogin(value: any) {
     this.authService.doLogin(value).then(
       (res) => {
-        this.router.navigate(["/user"]);
+        this.router.navigate(["/general-page"]);
       },
       (err) => {
         console.log(err);

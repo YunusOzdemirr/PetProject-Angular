@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { Pet } from 'src/app/models/pet';
-import { User } from 'src/app/models/user';
-import { PetService } from 'src/app/services/pet.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { Observable } from "rxjs";
+import { Pet } from "src/app/models/pet";
+import { User } from "src/app/models/user";
+import { PetService } from "src/app/services/pet.service";
 
 @Component({
-  selector: 'app-pet',
-  templateUrl: './pet.component.html',
-  styleUrls: ['./pet.component.css']
+  selector: "app-pet",
+  templateUrl: "./pet-add.component.html",
+  styleUrls: ["./pet-add.component.css"],
 })
 export class PetComponent implements OnInit {
   public petsForm: FormGroup;
   pet: Pet = new Pet();
-  constructor(private petService: PetService,
+  constructor(
+    private petService: PetService,
     private fb: FormBuilder,
-    public toastr: ToastrService) {
-  }
+    public toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.petForm();
@@ -25,23 +26,23 @@ export class PetComponent implements OnInit {
   }
   petForm() {
     this.petsForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      userName: ['', [Validators.required, Validators.minLength(2)]],
-      animalType: ['', [Validators.required, Validators.minLength(2)]],
-      photoUrl: [''],
-    })
+      name: ["", [Validators.required, Validators.minLength(2)]],
+      userName: ["", [Validators.required, Validators.minLength(2)]],
+      animalType: ["", [Validators.required, Validators.minLength(2)]],
+      photoUrl: [""],
+    });
   }
   get name() {
-    return this.petsForm.get('name');
+    return this.petsForm.get("name");
   }
   get userName() {
-    return this.petsForm.get('userName');
+    return this.petsForm.get("userName");
   }
   get animalType() {
-    return this.petsForm.get('animalType');
+    return this.petsForm.get("animalType");
   }
   get photoUrl() {
-    return this.petsForm.get('photoUrl');
+    return this.petsForm.get("photoUrl");
   }
 
   // Reset student form's values
@@ -50,9 +51,11 @@ export class PetComponent implements OnInit {
   }
   submitPetData() {
     this.petService.createPet(this.petsForm.value); // Submit student data using CRUD API
-    this.toastr.success(this.petsForm.controls['name'].value + ' successfully added!'); // Show success message when data is successfully submited
-    this.ResetForm();  // Reset form when clicked on reset button
-  };
+    this.toastr.success(
+      this.petsForm.controls["name"].value + " successfully added!"
+    ); // Show success message when data is successfully submited
+    this.ResetForm(); // Reset form when clicked on reset button
+  }
   // updateActive() {
   //   this.petService.updatePet(this.pet.id, {})
   //     .catch(err => console.log(err));
@@ -85,5 +88,4 @@ export class PetComponent implements OnInit {
   //   this.petService.createPet(Object.assign({ Pet }, this.pet));
   //   console.log(this.pet)
   // }
-
 }
