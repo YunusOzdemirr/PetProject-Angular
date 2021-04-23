@@ -3,12 +3,11 @@
 <br>
 <div style="margin-left:100px" class="btn-group">
   <!-- goBack() methos to back to previous component -->
-  <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
+  <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Geri Git</button>
 </div>
 <div style="margin-left:100px" class="pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Hayvan Kayıt</h1>
-  <p class="custom-text">Kayıt İşlemleri <strong>Pet management system</strong> built with <strong>Angular 10
-      and Firebase</strong></p>
+  <h1 class="h2">Evcil Hayvan Kayıt</h1>
+
 </div>
 
 <!-- Student form -->
@@ -44,9 +43,8 @@
           <label>Fotoğraf</label>
           <input type="text" formControlName="photoUrl" class="form-control" required>
           <!-- Showing errors using getter method -->
-          <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>bir resim url giriniz</p>
+          <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>Bir Resim Kaydedin</p>
         </div>
-
       </div>
 
       <div class="form-group text-right">

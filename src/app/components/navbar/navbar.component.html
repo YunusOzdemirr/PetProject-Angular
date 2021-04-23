@@ -1,12 +1,12 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" style="height:50px; align-items: center;">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/register-student">
-        <span class="dasboard-text" style="margin-left:5px"> Pet Project</span>
+        <span class="dasboard-text" style="margin-left:5px">Pet Project</span>
     </a>
     <div class="flex-container"> 
         <li class="nav-item dropdown" style="padding-bottom:20px !important">
             <a class="nav-link dropdown-toggle" style="align-items: center;" *ngIf="!user.name" id="navbarDropdown"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Hello
+                Merhaba
             </a>
             <a class="nav-link dropdown-toggle" *ngIf="user.name" id="navbarDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -15,23 +15,19 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                     <a class="dropdown-item" *ngIf="!authService.isLoggedIn()" routerLink="/register-user">
-                        Sign In
+                        Kayıt Ol
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item" *ngIf="!authService.isLoggedIn()" routerLink="/login-user">
-                        Log In
+                        Giriş Yap
                     </a>
                 </li>
                 <a class="dropdown-item" *ngIf="authService.isLoggedIn()" aria-labelledby="navbarDropdown"
                     routerLink="/login-user" (click)="logout()">
-                    Log Out
+                    Çıkış Yap
                 </a>
             </ul>
-
-
-
-
         </li>
         <div>
             <img class="card-img-top image" style="margin-right: 20px;"

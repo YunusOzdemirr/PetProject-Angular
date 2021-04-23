@@ -56,7 +56,7 @@ export class PetComponent implements OnInit {
   submitPetData() {
     this.petService.createPet(this.petsForm.value); // Submit student data using CRUD API
     this.toastr.success(
-      this.petsForm.controls["name"].value + " successfully added!"
+      this.petsForm.controls["name"].value + " başarıyla kaydedildi!"
     ); // Show success message when data is successfully submited
     this.ResetForm(); // Reset form when clicked on reset button
   }

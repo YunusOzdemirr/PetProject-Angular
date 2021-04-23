@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, Params } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-login",
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string = "";
 
   constructor(
+    private toastr: ToastrService,
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   tryLogin(value: any) {
     this.authService.doLogin(value).then(
       (res) => {
+        this.toastr.success("Hoşgeldiniz");
         this.router.navigate(["/general-page"]);
       },
       (err) => {

@@ -8,17 +8,16 @@ import { LoginComponent } from "./components/authentication/login/login.componen
 import { SignUpComponent } from "./components/authentication/sign-up/sign-up.component";
 import { UserListComponent } from "./components/user/user-list/user-list.component";
 import { UserUpdateComponent } from "./components/user/user-update/user-update.component";
-import { UserComponent } from "./components/user/user/user.component";
 import { AddUserComponent } from "./components/user/add-user/add-user.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UserDetailComponent } from "./components/user/user-detail/user-detail.component";
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login-user", pathMatch: "full" },
   { path: "register-user", component: SignUpComponent },
   { path: "general-page", component: GeneralPageComponent },
   { path: "detail-user/:id", component: UserDetailComponent },
-  { path: "user", component: UserComponent },
   { path: "add-user", component: AddUserComponent },
   { path: "login-user", component: LoginComponent },
   { path: "view-users", component: UserListComponent },

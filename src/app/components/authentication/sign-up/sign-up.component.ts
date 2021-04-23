@@ -1,23 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { User } from "src/app/models/user";
+import { AuthService } from "src/app/services/auth.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: "app-sign-up",
+  templateUrl: "./sign-up.component.html",
+  styleUrls: ["./sign-up.component.css"],
 })
 export class SignUpComponent implements OnInit {
-
-
-
   registerForm: FormGroup;
-  errorMessage: string = '';
-  successMessage: string = '';
+  errorMessage: string = "";
+  successMessage: string = "";
 
   constructor(
     private userService: UserService,
@@ -25,33 +22,33 @@ export class SignUpComponent implements OnInit {
     public toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private router: Router) {
+    private router: Router
+  ) {
     this.createForm();
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   createForm() {
     this.registerForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      petName: [''],
-      photoURL: [''],
+      email: ["", Validators.required],
+      password: ["", Validators.required],
+      petName: [""],
+      photoURL: [""],
     });
   }
   tryRegister(value: any) {
-    this.authService.doRegister(value)
-      .then(res => {
+    this.authService.doRegister(value).then(
+      (res) => {
         console.log(res);
         this.errorMessage = "";
-        this.successMessage = "Your account has been created";
-      }, err => {
+        this.successMessage = "Hesabınız oluşturuldu";
+        this.toastr.success(this.successMessage);
+      },
+      (err) => {
         console.log(err);
         this.errorMessage = err.message;
         this.successMessage = "";
-      })
+      }
+    );
   }
-
-
 }
