@@ -66,16 +66,7 @@ export class UserDetailComponent implements OnInit {
 
   updateUserData() {
     this.editForm = this.fb.group({
-      name: ["this.user.name", [Validators.required, Validators.minLength(2)]],
-      email: [
-        this.user.email,
-        [
-          Validators.required,
-          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
-        ],
-      ],
-      photoURL: [this.user.photoURL],
-      petName: [this.user.petName],
+      petName: ["", [Validators.required]],
     });
   }
 
@@ -86,9 +77,7 @@ export class UserDetailComponent implements OnInit {
   onUserFormSubmit() {
     if (this.userId) {
       this.userService.update(this.userId, this.editForm.value).then(() => {
-        this.toastr.success(
-          this.editForm.controls["name"].value + " başarıyla güncelleştirildi"
-        );
+        this.toastr.success(this.user.name + " başarıyla güncelleştirildi");
         this.router.navigate(["/view-users"]);
       });
     } else {
@@ -106,6 +95,7 @@ export class UserDetailComponent implements OnInit {
         name: response.data.name,
         photoURL: response.data.photoURL,
         email: response.data.email,
+        petName: response.data.petName,
       });
       console.log(this.userId);
     });

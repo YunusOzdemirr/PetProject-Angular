@@ -27,15 +27,14 @@
                     <tbody>
                         <tr>
                             <th scope="row">{{user.photoURL}}</th>
-                            <td>{{user.name}}</td>
+                            <td id="name" formControlName="name">{{user.name}}</td>
                             <td>{{user.email}}</td>
-                            <select id="petId" class="form-control">
+                            <select id="petId" class="form-control" formControlName="petName">
+                                <option>Seçiniz</option>
                                 <option *ngFor="let pet of petList">{{pet.name}}</option>
                             </select>
-                            <td *ngIf="!user.petName">Evcil Hayvan yok</td>
                             <td class="text-center action-block">
-                                <button type="submit" class="btn btn-primary" style="margin-right:5px"
-                                    routerLink="/view-users/{{user.id}}">Kaydet</button>
+                                <button type="submit" class="btn btn-primary" style="margin-right:5px">Kaydet</button>
                             </td>
                         </tr>
                     </tbody>
