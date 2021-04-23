@@ -1,11 +1,12 @@
 <br>
 <br>
 <br>
-<div class="btn-group">
+<div style="margin-left:100px" class="btn-group">
     <!-- goBack() methos to back to previous component -->
     <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
 </div>
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div style="margin-left:100px"
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Evcil Hayvan Listesi</h1>
     <a routerLink="/view-pet" class="btn btn-success" *ngIf="hideWhenNoPet">
         <i class="fas fa-plus custom-fa-plus"></i>
@@ -13,7 +14,7 @@
     </a>
 </div>
 
-<div class="pricing-header mx-auto">
+<div style="margin-left:100px" class="pricing-header mx-auto">
 
     <div class="no-data text-center" *ngIf="noData">
 
@@ -24,7 +25,7 @@
         </a>
     </div>
 
-    <div class="table-responsive">
+    <div style="margin-left:100px" class="table-responsive">
         <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
             <thead>
                 <tr>
@@ -52,5 +53,6 @@
             </tbody>
         </table>
     </div>
-    <pagination-controls (pageChange)="p = $event" AutoHide="true" Responsive="true"></pagination-controls>
+    <pagination-controls style="margin-left:100px" (pageChange)="p = $event" AutoHide="true" Responsive="true">
+    </pagination-controls>
 </div>

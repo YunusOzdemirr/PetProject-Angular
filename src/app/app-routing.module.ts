@@ -12,7 +12,7 @@ import { UserComponent } from "./components/user/user/user.component";
 import { AddUserComponent } from "./components/user/add-user/add-user.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/register-user", pathMatch: "full" },
+  { path: "", redirectTo: "/login-user", pathMatch: "full" },
   { path: "register-user", component: SignUpComponent },
   { path: "general-page", component: GeneralPageComponent },
   { path: "user", component: UserComponent },
