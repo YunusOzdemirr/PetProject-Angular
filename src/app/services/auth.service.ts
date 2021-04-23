@@ -33,7 +33,6 @@ export class AuthService {
     this.user.subscribe((user: any) => {
       if (user) {
         this.userDetails = user;
-
         console.log(this.userDetails);
       } else {
         this.userDetails = null;

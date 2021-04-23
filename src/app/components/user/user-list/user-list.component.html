@@ -1,11 +1,12 @@
 <br>
 <br>
 <br>
-<div class="btn-group">
+<div style="margin-left: 5px;" class="btn-group">
     <!-- goBack() methos to back to previous component -->
     <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Geri Git</button>
 </div>
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div style="margin-left: 5px;"
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Kullanıcı Listesi</h1>
     <a routerLink="/register-user" class="btn btn-success" *ngIf="hideWhenNoUser">
         <i class="fas fa-plus custom-fa-plus"></i>
@@ -24,16 +25,16 @@
         </a>
     </div>
 
-    <div class="mb-3">
+    <div style="margin-left: 5px;" class="mb-3">
         <label for="filterText" class="form-label">Kullanıcı Ara</label>
         <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
             placeholder="Arama İfadesi Giriniz" />
     </div>
-    <div *ngIf="filterText.length>0" class="alert alert-primary">
+    <div style="margin-left: 5px;" *ngIf="filterText.length>0" class="alert alert-primary">
         {{ filterText }} aradınız
     </div>
 
-    <div class="table-responsive">
+    <div style="margin-left: 5px;" class="table-responsive">
         <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
             <thead>
                 <tr>
