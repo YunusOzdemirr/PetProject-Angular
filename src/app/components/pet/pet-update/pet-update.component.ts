@@ -39,6 +39,7 @@ export class PetUpdateComponent implements OnInit {
       this.petService.getPetById(this.petId).subscribe((result: any) => {
         if (result) {
           this.pet = result;
+          console.log(result);
         }
       });
     }

@@ -39,8 +39,7 @@
                 <tr>
                     <th scope="col">Kullanıcı Id</th>
                     <th scope="col">Kullanıcı Adı</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Fotoğraf</th>
+                    <th scope="col">Evcil Hayvan Adı</th>
                     <th class="text-center" scope="col">Düzenle</th>
                 </tr>
             </thead>
@@ -49,9 +48,11 @@
                     }; let i=index;">
                     <th scope="row">{{user.id}}</th>
                     <td>{{user.name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.photoURL}}</td>
+                    <td *ngIf="user.petName">{{user.petName}}</td>
+                    <td *ngIf="!user.petName">Evcil Hayvan yok</td>
                     <td class="text-center action-block">
+                        <button type="submit" class="btn btn-primary" style="margin-right:5px"
+                            routerLink="/detail-user/{{user.id}}">Hayvan ata</button>
                         <button type="submit" class="btn btn-primary" style="margin-right:5px"
                             routerLink="/edit-user/{{user.id}}">Düzenle</button>
                         <button type="submit" class="btn btn-primary" (click)=" deleteUser(user)">Sil</button>

@@ -33,6 +33,7 @@ export class UserUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateUserData();
+    //this.getUser(this.user.id);
     //const id = this.actRoute.snapshot.paramMap.get("id") ? "" : "";
     //console.log(id);
     // this.userService
@@ -42,21 +43,28 @@ export class UserUpdateComponent implements OnInit {
     //     this.editForm.setValue(data);
     //   });
 
+    // this.actRoute.params.subscribe((params) => {
+    //   if (params["id"]) {
+    //     this.updateUserData();
+    //     this.getUser(params["id"]);
+    //     this.title = "Edit";
+    //   }
+    // });
+
     if (this.userId) {
       this.title = "Edit";
       this.userService.getUserById(this.userId).subscribe((result: any) => {
         if (result) {
           this.user = result;
+          this.user.name = result.name;
+          console.log(result.name);
         }
       });
     }
   }
+
   get name() {
     return this.editForm.get("name");
-  }
-
-  get petName() {
-    return this.editForm.get("petName");
   }
 
   get email() {
@@ -70,7 +78,6 @@ export class UserUpdateComponent implements OnInit {
   updateUserData() {
     this.editForm = this.fb.group({
       name: ["", [Validators.required, Validators.minLength(2)]],
-      petName: [""],
       email: [
         "",
         [
@@ -107,5 +114,17 @@ export class UserUpdateComponent implements OnInit {
         this.router.navigate(["/view-users"]);
       });
     }
+  }
+  getUser(user: string) {
+    this.userId = user;
+    this.userService.getUserById(user).subscribe((response: any) => {
+      this.editForm.patchValue({
+        id: response.data.id,
+        name: response.data.name,
+        photoURL: response.data.photoURL,
+        email: response.data.email,
+      });
+      console.log(this.userId);
+    });
   }
 }
