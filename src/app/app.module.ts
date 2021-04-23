@@ -29,6 +29,7 @@ import { UserComponent } from "./components/user/user/user.component";
 import { PetDetailComponent } from "./components/pet/pet-detail/pet-detail.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { GeneralPageComponent } from "./components/general-page/general-page.component";
+import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { GeneralPageComponent } from "./components/general-page/general-page.com
     PetDetailComponent,
     NavbarComponent,
     GeneralPageComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,

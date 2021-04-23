@@ -22,7 +22,7 @@
                                 <label>İsim</label>
                                 <input type="text" formControlName="name" class="form-control" required>
                                 <p *ngIf="name?.touched && name?.invalid" class="error">
-                                    <sup>*</sup>Please enter firstname
+                                    <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>
                                 <p *ngIf="name?.errors?.minlength" class="error">
                                     <sup>*</sup>isim 2 kelimeden fazla olmalı
@@ -32,28 +32,23 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label>Email</label>
-                                <input type="email" placeholder="Email" formControlName="email" class="form-control"
-                                    required>
-                                <p *ngIf="email?.touched && email?.invalid" class="error"><sup>*</sup>Please provide
-                                    email
-                                </p>
-                                <p *ngIf="email?.errors?.pattern" class="error"><sup>*</sup>Please enter correct email
+                                <input type="email" formControlName="email" class="form-control" required>
+                                <p *ngIf="email?.touched && email?.invalid" class="error"><sup>*</sup>Lütfen boş
+                                    bırakmayınız
                                 </p>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>Evcil Hayvan Adı</label>
-                                <input type="text" placeholder="Evcil Hayvan Adı" formControlName="petName"
-                                    class="form-control" required>
+                                <input type="text" formControlName="petName" class="form-control" required>
                                 <p *ngIf="petName?.touched && petName?.invalid" class="error">
-                                    <sup>*</sup>Lütfen geçerli bir hayvan adı girin
+                                    <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>PhotoUrl</label>
-                                <input type="text" placeholder="photoURL" formControlName="photoURL"
-                                    class="form-control" required>
+                                <input type="text" formControlName="photoURL" class="form-control" required>
                                 <p *ngIf="photoURL?.touched && photoURL?.invalid" class="error">
-                                    <sup>*</sup>Please provide contact number
+                                    <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>
                             </div>
                         </div>
@@ -68,56 +63,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!--
-<h2>Employee Form</h2>
-<hr />
-
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <div class="card">
-            <div class="card-header">
-                <h3>{{title}} employee</h3>
-            </div>
-            <div class="card-body">
-                <form #employeeForm="ngForm" (ngSubmit)="employeeForm.form.valid && onEmployeeFormSubmit()" novalidate>
-                    <div class=" form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" [(ngModel)]="user.name" name="name" #name="ngModel"
-                            required>
-                        <span class="text-danger" *ngIf="employeeForm.submitted && name.errors?.required">
-                            Name is required
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <select placeholder="email" class="form-control" [(ngModel)]="user.email" name="email"
-                            #gender="ngModel" required>
-                            <option value="">-- Select Pet --</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                        <span class="text-danger" *ngIf="employeeForm.submitted && gender.errors?.required">
-                            Gender is required
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <label for="department">Department</label>
-                        <input type="text" class="form-control" [(ngModel)]="user.petName" name="email"
-                            #department="ngModel" required>
-                        <span class="text-danger" *ngIf="employeeForm.submitted && department.errors?.required">
-                            Department is required
-                        </span>
-                    </div>
-
-                    <div class="form-group text-right">
-                        <button type="submit" class="btn btn-primary mr-2">Save</button>
-                        <button type="button" class="btn btn-danger" (click)="goBack()">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->

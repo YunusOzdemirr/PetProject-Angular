@@ -41,11 +41,13 @@
                 <tr *ngFor="let pet of petList | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
                     <th scope="row">{{pet.id}}</th>
                     <td>{{pet.name}}</td>
-                    <td>{{pet.userName}}</td>
+                    <td *ngIf="pet.userName">{{pet.userName}}</td>
+                    <td *ngIf="!pet.userName">Sahipsiz</td>
                     <td>{{pet.animalType}}</td>
-                    <img src="{{pet.photoUrl}}" style="width:50px; height:50px">
+                    <img *ngIf="pet.photoUrl" src="{{pet.photoUrl}}" style="width:50px; height:50px">
+                    <td *ngIf="!pet.photoUrl">Resim Yok</td>
                     <td class="text-center action-block">
-                        <button type="submit" class="btn btn-primary" routerLink="/edit-user/{{pet.id}}"></button>
+                        <button type="submit" class="btn btn-primary" routerLink="/edit-pet/{{pet.id}}"></button>
 
                         <button type="submit" class="btn btn-primary" (click)=" deleteUser(pet)"></button>
                     </td>

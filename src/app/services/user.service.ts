@@ -48,7 +48,7 @@ export class UserService {
   }
   getUserById(userId: string) {
     const userData = this.angularFirestore
-      .doc("Users/" + userId)
+      .doc("users/" + userId)
       .valueChanges();
     return userData;
   }
@@ -58,18 +58,18 @@ export class UserService {
   //     .valueChanges();
   //   return userData;
   // }
-  GetUser(id: string) {
-    this.userRef = this.db.object("view-user/" + id);
-    return this.userRef;
-  }
+  // GetUser(id: string) {
+  //   this.userRef = this.db.object("view-user/" + id);
+  //   return this.userRef;
+  // }
 
-  updateUser(user: User) {
-    this.userRef.update({
-      name: user.name,
-      petName: user.petName,
-      photoURL: user.photoURL,
-    });
-  }
+  // updateUser(user: User) {
+  //   this.userRef.update({
+  //     name: user.name,
+  //     petName: user.petName,
+  //     photoURL: user.photoURL,
+  //   });
+  // }
   saveUser(user: User) {
     const userData = JSON.parse(JSON.stringify(user));
     return this.angularFirestore.collection("users").add(userData);
