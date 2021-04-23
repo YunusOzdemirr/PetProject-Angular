@@ -6,6 +6,7 @@ import { Pet } from "src/app/models/pet";
 import { User } from "src/app/models/user";
 import { PetService } from "src/app/services/pet.service";
 import { Location } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-pet",
@@ -19,7 +20,8 @@ export class PetComponent implements OnInit {
     private petService: PetService,
     private fb: FormBuilder,
     public toastr: ToastrService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +61,7 @@ export class PetComponent implements OnInit {
     this.ResetForm(); // Reset form when clicked on reset button
   }
   goBack() {
-    this.location.back();
+    this.router.navigate(["/general-page"]);
   }
   // updateActive() {
   //   this.petService.updatePet(this.pet.id, {})

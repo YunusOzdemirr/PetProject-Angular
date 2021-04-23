@@ -24,6 +24,15 @@
         </a>
     </div>
 
+    <div class="mb-3">
+        <label for="filterText" class="form-label">Kullanıcı Ara</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+            placeholder="Arama İfadesi Giriniz" />
+    </div>
+    <div *ngIf="filterText.length>0" class="alert alert-primary">
+        {{ filterText }} aradınız
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
             <thead>
@@ -36,7 +45,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of userList | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+                <tr *ngFor="let user of userList| filterPipe:filterText | paginate: { itemsPerPage: 7, currentPage: p
+                    }; let i=index;">
                     <th scope="row">{{user.id}}</th>
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>

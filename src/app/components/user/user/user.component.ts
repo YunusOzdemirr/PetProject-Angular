@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
     });
   }
   goBack() {
-    this.location.back();
+    this.router.navigate(["/general-page"]);
   }
 
   createForm(

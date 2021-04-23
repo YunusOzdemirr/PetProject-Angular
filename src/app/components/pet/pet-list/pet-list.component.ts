@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Pet } from "src/app/models/pet";
 import { PetService } from "src/app/services/pet.service";
 import { Location } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-pet-list",
@@ -19,7 +20,8 @@ export class PetListComponent implements OnInit {
   constructor(
     private petService: PetService,
     public toastr: ToastrService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,6 @@ export class PetListComponent implements OnInit {
     }
   }
   goBack() {
-    this.location.back();
+    this.router.navigate(["/general-page"]);
   }
 }

@@ -83,6 +83,6 @@ export class PetUpdateComponent implements OnInit {
     }
   }
   goBack() {
-    this.location.back();
+    this.router.navigate(["/general-page"]);
   }
 }

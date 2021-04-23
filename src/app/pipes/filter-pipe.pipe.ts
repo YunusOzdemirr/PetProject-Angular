@@ -1,14 +1,16 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Pet } from '../models/pet';
+import { Pipe, PipeTransform } from "@angular/core";
+import { User } from "../models/user";
 
 @Pipe({
-  name: 'filterPipe'
+  name: "filterPipe",
 })
 export class FilterPipePipe implements PipeTransform {
-
-  transform(value: Pet[], filterText: string): Pet[] {
+  transform(value: User[], filterText: string): User[] {
     filterText = filterText ? filterText.toLocaleLowerCase() : "";
-    return filterText ? value
-      .filter((p: Pet) => p.name.toLocaleLowerCase().indexOf(filterText) !== -1) : value;
+    return filterText
+      ? value.filter(
+          (p: User) => p.name.toLocaleLowerCase().indexOf(filterText) !== -1
+        )
+      : value;
   }
 }

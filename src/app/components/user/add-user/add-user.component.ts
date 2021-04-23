@@ -59,7 +59,7 @@ export class AddUserComponent implements OnInit {
     });
   }
   goBack() {
-    this.location.back();
+    this.router.navigate(["/general-page"]);
   }
   get name() {
     return this.usersForm.get("name");
@@ -83,6 +83,7 @@ export class AddUserComponent implements OnInit {
     this.toastr.success(
       this.usersForm.controls["name"].value + " successfully added!"
     ); // Show success message when data is successfully submited
+    this.router.navigate(["/view-users"]);
     this.ResetForm(); // Reset form when clicked on reset button
   }
 }

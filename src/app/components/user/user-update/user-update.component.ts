@@ -83,7 +83,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    this.router.navigate(["/general-page"]);
   }
 
   // updateForm() {
