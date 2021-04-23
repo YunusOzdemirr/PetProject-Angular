@@ -88,7 +88,7 @@ export class AddUserComponent implements OnInit {
   submitUserData() {
     this.userService.createUser(this.usersForm.value); // Submit student data using CRUD API
     this.toastr.success(
-      this.usersForm.controls["name"].value + " successfully added!"
+      this.usersForm.controls["name"].value + "adlı kullanıcı başarıyla eklendi"
     ); // Show success message when data is successfully submited
     this.router.navigate(["/view-users"]);
     this.ResetForm(); // Reset form when clicked on reset button
