@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        this.errorMessage = err.message;
+        this.errorMessage = "Böyle bir kullanıcı yok veya silinmiş";
+        // this.errorMessage = err.message;
       }
     );
   }

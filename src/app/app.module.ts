@@ -30,7 +30,6 @@ import { PetDetailComponent } from "./components/pet/pet-detail/pet-detail.compo
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { GeneralPageComponent } from "./components/general-page/general-page.component";
 import { UserDetailComponent } from "./components/user/user-detail/user-detail.component";
-import { AuthInfoComponent } from "./components/authentication/auth-info/auth-info.component";
 
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import { AuthInfoComponent } from "./components/authentication/auth-info/auth-in
     NavbarComponent,
     GeneralPageComponent,
     UserDetailComponent,
-    AuthInfoComponent,
   ],
   imports: [
     BrowserModule,
