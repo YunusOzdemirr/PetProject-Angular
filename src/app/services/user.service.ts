@@ -42,7 +42,6 @@ export class UserService {
     return this.angularFirestore.collection("users").add({
       name: user.name,
       email: user.email,
-      petName: user.petName,
       photoURL: user.photoURL,
     });
   }
