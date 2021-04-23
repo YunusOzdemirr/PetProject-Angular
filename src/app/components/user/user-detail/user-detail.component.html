@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">{{user.photoURL}}</th>
+                            <th scope="row"><img [src]="user.photoURL"></th>
                             <td id="name" formControlName="name">{{user.name}}</td>
                             <td>{{user.email}}</td>
                             <select id="petId" class="form-control" formControlName="petName">

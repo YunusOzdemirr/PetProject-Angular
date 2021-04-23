@@ -39,7 +39,8 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>PhotoUrl</label>
-                                <input type="text" formControlName="photoURL" class="form-control" required>
+                                <input type="file" formControlName="photoURL" class="text-nowrap text-truncate"
+                                    (change)="selectFile($event)" />
                                 <p *ngIf="photoURL?.touched && photoURL?.invalid" class="error">
                                     <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>

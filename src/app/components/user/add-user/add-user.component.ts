@@ -5,6 +5,8 @@ import { ToastrService } from "ngx-toastr";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 import { Location } from "@angular/common";
+import { FileUpload } from "src/app/models/FileUpload";
+import { FileUploadService } from "src/app/services/file-upload.service";
 @Component({
   selector: "app-add-user",
   templateUrl: "./add-user.component.html",
@@ -14,13 +16,17 @@ export class AddUserComponent implements OnInit {
   userId: string;
   title = "Create";
   user: User;
+  selectedFiles: FileList;
+  currentFileUpload: FileUpload;
+  percentage: number;
   usersForm: FormGroup;
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
     public toastr: ToastrService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private uploadService: FileUploadService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +50,7 @@ export class AddUserComponent implements OnInit {
       this.submitUserData();
     }
   }
+
   userForm() {
     this.usersForm = this.fb.group({
       name: ["", [Validators.required, Validators.minLength(2)]],
@@ -85,5 +92,24 @@ export class AddUserComponent implements OnInit {
     ); // Show success message when data is successfully submited
     this.router.navigate(["/view-users"]);
     this.ResetForm(); // Reset form when clicked on reset button
+  }
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    const file: any = this.selectedFiles.item(0);
+    //this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+      (percentage) => {
+        this.percentage = Math.round(percentage);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

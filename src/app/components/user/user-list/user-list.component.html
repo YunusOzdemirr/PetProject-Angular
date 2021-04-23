@@ -38,6 +38,7 @@
             <thead>
                 <tr>
                     <th scope="col">Kullanıcı Id</th>
+                    <th scope="col">Kullanıcı Fotoğrafı</th>
                     <th scope="col">Kullanıcı Adı</th>
                     <th scope="col">Evcil Hayvan Adı</th>
                     <th class="text-center" scope="col">Düzenle</th>
@@ -47,6 +48,7 @@
                 <tr *ngFor="let user of userList| filterPipe:filterText | paginate: { itemsPerPage: 7, currentPage: p
                     }; let i=index;">
                     <th scope="row">{{user.id}}</th>
+                    <td><img [src]="user.photoURL" style="width:50px; height:40px;"></td>
                     <td>{{user.name}}</td>
                     <td *ngIf="user.petName">{{user.petName}}</td>
                     <td *ngIf="!user.petName">Evcil Hayvan yok</td>

@@ -5,7 +5,13 @@ import { Location } from "@angular/common"; // Location service is used to go ba
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/services/user.service";
 import { User } from "src/app/models/user";
-
+import { FileUpload } from "src/app/models/FileUpload";
+import { FileUploadService } from "src/app/services/file-upload.service";
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl,
+} from "@angular/platform-browser";
 @Component({
   selector: "app-user-update",
   templateUrl: "./user-update.component.html",
@@ -14,14 +20,19 @@ import { User } from "src/app/models/user";
 export class UserUpdateComponent implements OnInit {
   editForm: FormGroup;
   title = "Create";
+  currentFileUpload: FileUpload;
   errorMessage: any;
+  selectedFiles: FileList;
+  percentage: number;
   user = new User();
   userId: string;
   constructor(
+    private _sanitizer: DomSanitizer,
     private userService: UserService,
     private fb: FormBuilder,
     private location: Location,
     private actRoute: ActivatedRoute,
+    private uploadService: FileUploadService,
     private router: Router,
     private toastr: ToastrService
   ) {
@@ -32,7 +43,6 @@ export class UserUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateUserData();
     //this.getUser(this.user.id);
     //const id = this.actRoute.snapshot.paramMap.get("id") ? "" : "";
     //console.log(id);
@@ -56,11 +66,11 @@ export class UserUpdateComponent implements OnInit {
       this.userService.getUserById(this.userId).subscribe((result: any) => {
         if (result) {
           this.user = result;
-          this.user.name = result.name;
-          console.log(result.name);
+          this.updateUserData(result.name, result.email, result.photoURL);
         }
       });
     }
+    // console.log(this.user.name);
   }
 
   get name() {
@@ -75,17 +85,17 @@ export class UserUpdateComponent implements OnInit {
     return this.editForm.get("photoURL");
   }
 
-  updateUserData() {
+  updateUserData(name: string, email: string, photoURL: string) {
     this.editForm = this.fb.group({
-      name: ["", [Validators.required, Validators.minLength(2)]],
+      name: [name],
       email: [
-        "",
+        email,
         [
           Validators.required,
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
         ],
       ],
-      photoURL: [""],
+      photoURL: [photoURL],
     });
   }
 
@@ -126,5 +136,24 @@ export class UserUpdateComponent implements OnInit {
       });
       console.log(this.userId);
     });
+  }
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    const file: any = this.selectedFiles.item(0);
+    //this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+      (percentage) => {
+        this.percentage = Math.round(percentage);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

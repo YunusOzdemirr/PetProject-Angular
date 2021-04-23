@@ -36,17 +36,25 @@
 
                 <div class="col-md-12 mb-3">
                     <label>Fotoğraf</label>
-                    <input type="text" formControlName="photoURL" class="form-control" required>
+                    <label>
+                        <input type="file" formControlName="photoURL" class="text-nowrap text-truncate"
+                            (change)="selectFile($event)" />
+                    </label>
                     <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error"><sup>*</sup>bir resim url
                         giriniz
                     </p>
                 </div>
-
+                <div *ngIf="currentFileUpload" class="progress mt-2">
+                    <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+                        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+                        {{ percentage }}%
+                    </div>
+                </div>
             </div>
 
             <div class="form-group text-right">
                 <button type="button" class="btn btn-warning mr-2" (click)="ResetForm()">Sıfırla</button>
-                <button type="submit" class="btn btn-primary" [disabled]="!usersForm.valid">Kayıt
+                <button type="submit" class="btn btn-primary" (click)="upload()" [disabled]="!usersForm.valid">Kayıt
                     Ol</button>
             </div>
 
