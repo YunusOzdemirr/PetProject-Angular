@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, Params } from "@angular/router";
+import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { ToastrService } from "ngx-toastr";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-login",
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private fb: FormBuilder
   ) {

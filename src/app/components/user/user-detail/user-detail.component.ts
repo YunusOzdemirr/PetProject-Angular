@@ -22,7 +22,6 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,

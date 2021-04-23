@@ -7,11 +7,7 @@ import { UserService } from "src/app/services/user.service";
 import { User } from "src/app/models/user";
 import { FileUpload } from "src/app/models/FileUpload";
 import { FileUploadService } from "src/app/services/file-upload.service";
-import {
-  DomSanitizer,
-  SafeResourceUrl,
-  SafeUrl,
-} from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
 @Component({
   selector: "app-user-update",
   templateUrl: "./user-update.component.html",
@@ -27,10 +23,8 @@ export class UserUpdateComponent implements OnInit {
   user = new User();
   userId: string;
   constructor(
-    private _sanitizer: DomSanitizer,
     private userService: UserService,
     private fb: FormBuilder,
-    private location: Location,
     private actRoute: ActivatedRoute,
     private uploadService: FileUploadService,
     private router: Router,
@@ -43,24 +37,6 @@ export class UserUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getUser(this.user.id);
-    //const id = this.actRoute.snapshot.paramMap.get("id") ? "" : "";
-    //console.log(id);
-    // this.userService
-    //   .GetUser(id)
-    //   .valueChanges()
-    //   .subscribe((data) => {
-    //     this.editForm.setValue(data);
-    //   });
-
-    // this.actRoute.params.subscribe((params) => {
-    //   if (params["id"]) {
-    //     this.updateUserData();
-    //     this.getUser(params["id"]);
-    //     this.title = "Edit";
-    //   }
-    // });
-
     if (this.userId) {
       this.title = "Edit";
       this.userService.getUserById(this.userId).subscribe((result: any) => {
@@ -70,7 +46,6 @@ export class UserUpdateComponent implements OnInit {
         }
       });
     }
-    // console.log(this.user.name);
   }
 
   get name() {
@@ -102,14 +77,6 @@ export class UserUpdateComponent implements OnInit {
   goBack() {
     this.router.navigate(["/general-page"]);
   }
-
-  // updateForm() {
-  //   this.userService.update(this.editForm.value.id, this.editForm.value); // Update student data using CRUD API
-  //   this.toastr.success(
-  //     this.editForm.controls["name"].value + " updated successfully"
-  //   ); // Show succes message when data is successfully submited
-  //   this.router.navigate(["view-users"]); // Navigate to student's list page when student data is updated
-  // }
 
   onUserFormSubmit() {
     if (this.userId) {
@@ -144,7 +111,6 @@ export class UserUpdateComponent implements OnInit {
 
   upload(): void {
     const file: any = this.selectedFiles.item(0);
-    //this.selectedFiles = undefined;
 
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(

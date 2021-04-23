@@ -25,7 +25,6 @@ import { UserUpdateComponent } from "./components/user/user-update/user-update.c
 import { LoginComponent } from "./components/authentication/login/login.component";
 import { SignUpComponent } from "./components/authentication/sign-up/sign-up.component";
 import { AddUserComponent } from "./components/user/add-user/add-user.component";
-import { PetDetailComponent } from "./components/pet/pet-detail/pet-detail.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { GeneralPageComponent } from "./components/general-page/general-page.component";
 import { UserDetailComponent } from "./components/user/user-detail/user-detail.component";
@@ -42,7 +41,6 @@ import { UserDetailComponent } from "./components/user/user-detail/user-detail.c
     LoginComponent,
     SignUpComponent,
     AddUserComponent,
-    PetDetailComponent,
     NavbarComponent,
     GeneralPageComponent,
     UserDetailComponent,

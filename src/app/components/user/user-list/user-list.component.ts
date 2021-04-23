@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
-import { Location } from "@angular/common"; // Location service is used to go back to previous component
 import { Router } from "@angular/router";
 import { FileUploadService } from "src/app/services/file-upload.service";
 import { FileUpload } from "src/app/models/FileUpload";
@@ -25,7 +24,6 @@ export class UserListComponent implements OnInit {
   constructor(
     private userService: UserService,
     public toastr: ToastrService,
-    private location: Location,
     private router: Router,
     private uploadService: FileUploadService
   ) {}
@@ -41,7 +39,6 @@ export class UserListComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         map((changes) =>
-          // store the key
           changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
         )
       )

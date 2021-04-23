@@ -39,15 +39,6 @@ export class AuthService {
         this.userDetails = null;
       }
     });
-    // this.userData = this.afAuth.authState.pipe(
-    //     switchMap(user => {
-    //         if (user) {
-    //             return this.db.doc<User>(`users/${user.uid}`).valueChanges();
-    //         } else {
-    //             return of(null);
-    //         }
-    //     })
-    // );
   }
 
   getUserId(): string {
@@ -55,7 +46,7 @@ export class AuthService {
   }
 
   getCurrentUser(): string | any {
-    return sessionStorage.getItem("user") || undefined;
+    return sessionStorage.getItem("users") || undefined;
   }
 
   isLoggedIn() {
@@ -102,15 +93,4 @@ export class AuthService {
       }
     });
   }
-
-  // logUserIn(email: any, pass: any) {
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(email, pass)
-  //     .catch(function (error) {
-  // Handle Errors here.
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       console.log("error" + error);
-  //     });
 }

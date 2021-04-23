@@ -1,11 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { Observable } from "rxjs";
 import { Pet } from "src/app/models/pet";
-import { User } from "src/app/models/user";
 import { PetService } from "src/app/services/pet.service";
-import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 
 @Component({
@@ -20,13 +17,11 @@ export class PetComponent implements OnInit {
     private petService: PetService,
     private fb: FormBuilder,
     public toastr: ToastrService,
-    private location: Location,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.petForm();
-    //this.petService.getPetsList();
   }
   petForm() {
     this.petsForm = this.fb.group({
@@ -49,50 +44,17 @@ export class PetComponent implements OnInit {
     return this.petsForm.get("photoUrl");
   }
 
-  // Reset student form's values
   ResetForm() {
     this.petsForm.reset();
   }
   submitPetData() {
-    this.petService.createPet(this.petsForm.value); // Submit student data using CRUD API
+    this.petService.createPet(this.petsForm.value);
     this.toastr.success(
       this.petsForm.controls["name"].value + " başarıyla kaydedildi!"
-    ); // Show success message when data is successfully submited
-    this.ResetForm(); // Reset form when clicked on reset button
+    );
+    this.ResetForm();
   }
   goBack() {
     this.router.navigate(["/general-page"]);
   }
-  // updateActive() {
-  //   this.petService.updatePet(this.pet.id, {})
-  //     .catch(err => console.log(err));
-  // }
-  // deletePet() {
-  //   this.petService
-  //     .deletePet(this.pet.id)
-  //     .catch(err => console.log(err));
-  // }
-
-  // getPetsList() {
-  //   this.petService.getPetsList().snapshotChanges().pipe(
-  //     map((changes: any) =>
-  //       changes.map((c: any) =>
-  //         ({ key: c.payload.doc.id, ...c.payload.doc.data() })
-  //       )
-  //     )
-  //   ).subscribe((pets: Pet[]) => {
-  //     this.pets = pets;
-  //   });
-  // }
-  // form = new FormGroup({
-  //   petForm: new FormControl('')
-  // })
-
-  // onSubmit() {
-  //   // new Pet{
-  //   //   name: this.pet,
-  //   // }
-  //   this.petService.createPet(Object.assign({ Pet }, this.pet));
-  //   console.log(this.pet)
-  // }
 }

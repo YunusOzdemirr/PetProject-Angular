@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { User } from "src/app/models/user";
 import { AuthService } from "src/app/services/auth.service";
 import { UserService } from "src/app/services/user.service";
 
@@ -32,8 +31,6 @@ export class SignUpComponent implements OnInit {
     this.registerForm = this.fb.group({
       email: ["", Validators.required],
       password: ["", Validators.required],
-      petName: [""],
-      photoURL: [""],
     });
   }
   tryRegister(value: any) {

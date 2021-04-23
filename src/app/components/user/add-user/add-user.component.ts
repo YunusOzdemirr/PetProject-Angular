@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
-import { Location } from "@angular/common";
 import { FileUpload } from "src/app/models/FileUpload";
 import { FileUploadService } from "src/app/services/file-upload.service";
 @Component({
@@ -25,7 +24,6 @@ export class AddUserComponent implements OnInit {
     private fb: FormBuilder,
     public toastr: ToastrService,
     private router: Router,
-    private location: Location,
     private uploadService: FileUploadService
   ) {}
 
@@ -81,17 +79,16 @@ export class AddUserComponent implements OnInit {
     return this.usersForm.get("photoUrl");
   }
 
-  // Reset student form's values
   ResetForm() {
     this.usersForm.reset();
   }
   submitUserData() {
-    this.userService.createUser(this.usersForm.value); // Submit student data using CRUD API
+    this.userService.createUser(this.usersForm.value);
     this.toastr.success(
       this.usersForm.controls["name"].value + "adlı kullanıcı başarıyla eklendi"
-    ); // Show success message when data is successfully submited
+    );
     this.router.navigate(["/view-users"]);
-    this.ResetForm(); // Reset form when clicked on reset button
+    this.ResetForm();
   }
 
   selectFile(event: any): void {
@@ -100,7 +97,6 @@ export class AddUserComponent implements OnInit {
 
   upload(): void {
     const file: any = this.selectedFiles.item(0);
-    //this.selectedFiles = undefined;
 
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(

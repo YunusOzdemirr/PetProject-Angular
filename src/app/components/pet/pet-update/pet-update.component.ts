@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Location } from "@angular/common";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Pet } from "src/app/models/pet";
 import { PetService } from "src/app/services/pet.service";
@@ -18,7 +17,6 @@ export class PetUpdateComponent implements OnInit {
   pet = new Pet();
   petId: string;
   constructor(
-    private location: Location,
     private petService: PetService,
     private fb: FormBuilder,
     private actRoute: ActivatedRoute,
@@ -64,7 +62,6 @@ export class PetUpdateComponent implements OnInit {
     this.editForm = this.fb.group({
       name: ["", [Validators.required, Validators.minLength(2)]],
       animalType: ["", [Validators.required]],
-      userName: ["", [Validators.required]],
       photoUrl: ["", [Validators.required]],
     });
   }

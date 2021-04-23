@@ -11,7 +11,6 @@ import { UserUpdateComponent } from "./components/user/user-update/user-update.c
 import { AddUserComponent } from "./components/user/add-user/add-user.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UserDetailComponent } from "./components/user/user-detail/user-detail.component";
-import { AppComponent } from "./app.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login-user", pathMatch: "full" },
