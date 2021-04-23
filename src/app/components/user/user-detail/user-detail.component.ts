@@ -5,6 +5,8 @@ import { Location } from "@angular/common"; // Location service is used to go ba
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/services/user.service";
 import { User } from "src/app/models/user";
+import { PetService } from "src/app/services/pet.service";
+import { Pet } from "src/app/models/pet";
 @Component({
   selector: "app-user-detail",
   templateUrl: "./user-detail.component.html",
@@ -16,13 +18,15 @@ export class UserDetailComponent implements OnInit {
   errorMessage: any;
   user = new User();
   userId: string;
+  petList: Pet[];
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
     private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private petService: PetService
   ) {
     if (this.actRoute.snapshot.params["id"]) {
       this.userId = this.actRoute.snapshot.paramMap.get("id") || "id gelmiyor";
@@ -32,7 +36,9 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateUserData();
-
+    this.petService
+      .getPetList()
+      .subscribe((data: Pet[]) => (this.petList = data));
     if (this.userId) {
       this.title = "Edit";
       this.userService.getUserById(this.userId).subscribe((result: any) => {

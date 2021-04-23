@@ -29,12 +29,8 @@
                             <th scope="row">{{user.photoURL}}</th>
                             <td>{{user.name}}</td>
                             <td>{{user.email}}</td>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select id="petId" class="form-control">
+                                <option *ngFor="let pet of petList">{{pet.name}}</option>
                             </select>
                             <td *ngIf="!user.petName">Evcil Hayvan yok</td>
                             <td class="text-center action-block">
