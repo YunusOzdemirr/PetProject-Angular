@@ -24,7 +24,7 @@
                                 <p *ngIf="name?.touched && name?.invalid" class="error">
                                     <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>
-                                <p *ngIf="name?.errors?.minlength" class="error">
+                                <p style="color:red;" *ngIf="name?.errors?.minlength" class="error">
                                     <sup>*</sup>isim 2 kelimeden fazla olmalı
                                 </p>
                             </div>
@@ -33,23 +33,16 @@
                             <div class="col-md-12 mb-3">
                                 <label>Hayvan Türü</label>
                                 <input type="string" formControlName="animalType" class="form-control" required>
-                                <p *ngIf="animalType?.touched && animalType?.invalid" class="error"><sup>*</sup>Lütfen
+                                <p style="color:red;" *ngIf="animalType?.touched && animalType?.invalid" class="error">
+                                    <sup>*</sup>Lütfen
                                     boş bırakmayınız
-                                </p>
-                                <p *ngIf="animalType?.errors?.pattern" class="error"><sup>*</sup>Lütfen boş bırakmayınız
-                                </p>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label>Hayvan Sahibi Adı</label>
-                                <input type="text" formControlName="userName" class="form-control" required>
-                                <p *ngIf="userName?.touched && userName?.invalid" class="error">
-                                    <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>PhotoUrl</label>
-                                <input type="text" formControlName="photoUrl" class="form-control" required>
-                                <p *ngIf="photoUrl?.touched && photoUrl?.invalid" class="error">
+                                <input type="file" formControlName="photoUrl" class="text-nowrap text-truncate"
+                                    (change)="selectFile($event)" />
+                                <p *ngIf="photoUrl?.touched && photoUrl?.invalid" style="color:red;" class="error">
                                     <sup>*</sup>Lütfen boş bırakmayınız
                                 </p>
                             </div>

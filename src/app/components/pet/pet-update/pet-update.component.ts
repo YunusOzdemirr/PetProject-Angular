@@ -16,6 +16,7 @@ export class PetUpdateComponent implements OnInit {
   errorMessage: any;
   pet = new Pet();
   petId: string;
+  selectedFiles: FileList;
   constructor(
     private petService: PetService,
     private fb: FormBuilder,
@@ -30,18 +31,21 @@ export class PetUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updatePetData();
-
     if (this.petId) {
       this.title = "Edit";
       this.petService.getPetById(this.petId).subscribe((result: any) => {
         if (result) {
           this.pet = result;
           console.log(result);
+          this.updatePetData(result.name, result.animalType);
         }
       });
     }
   }
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
   get name() {
     return this.editForm.get("name");
   }
@@ -58,11 +62,11 @@ export class PetUpdateComponent implements OnInit {
     return this.editForm.get("photoUrl");
   }
 
-  updatePetData() {
+  updatePetData(name: string, animalType: string) {
     this.editForm = this.fb.group({
-      name: ["", [Validators.required, Validators.minLength(2)]],
-      animalType: ["", [Validators.required]],
-      photoUrl: ["", [Validators.required]],
+      name: [name],
+      animalType: [animalType],
+      photoUrl: [""],
     });
   }
 

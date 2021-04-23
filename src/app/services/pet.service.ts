@@ -34,7 +34,6 @@ export class PetService {
     return this.angularFirestore.collection("pets").add({
       name: pet.name,
       animalType: pet.animalType,
-      userName: pet.userName,
       photoUrl: pet.photoUrl,
     });
   }
