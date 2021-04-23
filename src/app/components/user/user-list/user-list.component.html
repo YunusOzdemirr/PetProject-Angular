@@ -52,9 +52,9 @@
                     <td>{{user.email}}</td>
                     <td>{{user.photoURL}}</td>
                     <td class="text-center action-block">
-                        <button type="submit" class="btn btn-primary" routerLink="/edit-user/{{user.id}}"></button>
-
-                        <button type="submit" class="btn btn-primary" (click)=" deleteUser(user)"></button>
+                        <button type="submit" class="btn btn-primary" style="margin-right:5px"
+                            routerLink="/edit-user/{{user.id}}">Düzenle</button>
+                        <button type="submit" class="btn btn-primary" (click)=" deleteUser(user)">Sil</button>
                     </td>
                 </tr>
             </tbody>
