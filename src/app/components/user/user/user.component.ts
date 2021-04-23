@@ -69,7 +69,7 @@ export class UserComponent implements OnInit {
   }
 
   logout() {
-    this.authService.doLogout().then(
+    this.authService.doLogOut().then(
       (res) => {
         this.router.navigate(["/login-user"]);
       },

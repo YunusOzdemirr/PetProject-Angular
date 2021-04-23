@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { AuthService } from "./services/auth.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-
-  constructor() {
+  constructor(private authService: AuthService) {
     // const things = db.collection('pets').valueChanges();
     // things.subscribe(console.log);
   }
 
-
-
+  LoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+  logout() {
+    return this.authService.doLogOut();
+  }
 }

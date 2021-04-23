@@ -18,7 +18,9 @@ import firebase from "firebase/app";
 export class AuthService {
   uid: any;
   userData: any;
-  user: User;
+  public loggedIn = false;
+  private user: Observable<firebase.User | null>;
+  private userDetails: firebase.User | null = null;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -27,6 +29,16 @@ export class AuthService {
     private db: AngularFireDatabase,
     private angularFireStore: AngularFirestore
   ) {
+    this.user = afAuth.authState;
+    this.user.subscribe((user: any) => {
+      if (user) {
+        this.userDetails = user;
+
+        console.log(this.userDetails);
+      } else {
+        this.userDetails = null;
+      }
+    });
     // this.userData = this.afAuth.authState.pipe(
     //     switchMap(user => {
     //         if (user) {
@@ -37,6 +49,19 @@ export class AuthService {
     //     })
     // );
   }
+
+  getUserId(): string {
+    return this.uid;
+  }
+
+  getCurrentUser(): string | any {
+    return sessionStorage.getItem("user") || undefined;
+  }
+
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
   doRegister(value: any) {
     return new Promise<any>((resolve, reject) => {
       firebase
@@ -59,20 +84,33 @@ export class AuthService {
         .then(
           (res) => {
             resolve(res);
+            this.loggedIn = true;
           },
           (err) => reject(err)
         );
     });
   }
 
-  doLogout() {
+  doLogOut() {
     return new Promise<void>((resolve, reject) => {
       if (firebase.auth().currentUser) {
         this.afAuth.signOut();
         resolve();
+        this.loggedIn = false;
       } else {
         reject();
       }
     });
   }
+
+  // logUserIn(email: any, pass: any) {
+  //   firebase
+  //     .auth()
+  //     .signInWithEmailAndPassword(email, pass)
+  //     .catch(function (error) {
+  // Handle Errors here.
+  //       var errorCode = error.code;
+  //       var errorMessage = error.message;
+  //       console.log("error" + error);
+  //     });
 }

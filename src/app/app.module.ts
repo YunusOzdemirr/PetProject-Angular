@@ -29,7 +29,8 @@ import { UserComponent } from "./components/user/user/user.component";
 import { PetDetailComponent } from "./components/pet/pet-detail/pet-detail.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { GeneralPageComponent } from "./components/general-page/general-page.component";
-import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+import { UserDetailComponent } from "./components/user/user-detail/user-detail.component";
+import { AuthInfoComponent } from "./components/authentication/auth-info/auth-info.component";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { UserDetailComponent } from './components/user/user-detail/user-detail.c
     NavbarComponent,
     GeneralPageComponent,
     UserDetailComponent,
+    AuthInfoComponent,
   ],
   imports: [
     BrowserModule,

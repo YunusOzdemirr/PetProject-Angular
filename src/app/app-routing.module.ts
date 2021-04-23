@@ -10,6 +10,7 @@ import { UserListComponent } from "./components/user/user-list/user-list.compone
 import { UserUpdateComponent } from "./components/user/user-update/user-update.component";
 import { UserComponent } from "./components/user/user/user.component";
 import { AddUserComponent } from "./components/user/add-user/add-user.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login-user", pathMatch: "full" },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "add-pet", component: PetComponent },
   { path: "view-pets", component: PetListComponent },
   { path: "edit-pet/:id", component: PetUpdateComponent },
+  { path: "navbar/:id", component: NavbarComponent },
 ];
 
 @NgModule({
