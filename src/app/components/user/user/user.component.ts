@@ -33,21 +33,22 @@ export class UserComponent implements OnInit {
           this.user.name,
           this.user.email,
           this.user.photoURL,
-          this.user.password
+          this.user.petName
         );
       }
     });
   }
+
   goBack() {
     this.router.navigate(["/general-page"]);
   }
 
-  createForm(name: any, email: any, photoUrl: any, password: any) {
+  createForm(name: any, email: any, photoUrl: any, petName: any) {
     this.profileForm = this.fb.group({
       name: [name, Validators.required],
       photoURL: ["", Validators.required],
       email: [email, Validators.required],
-      password: ["", Validators.required],
+      petName: ["", Validators.required],
     });
   }
 

@@ -48,6 +48,8 @@
                     }; let i=index;">
                     <th scope="row">{{user.id}}</th>
                     <td>{{user.name}}</td>
+                    <td *ngIf="user.petName">{{user.petName}}</td>
+                    <td *ngIf="!user.petName">Evcil Hayvan yok</td>
                     <td class="text-center action-block">
                         <button type="submit" class="btn btn-primary" style="margin-right:5px"
                             routerLink="/detail-user/{{user.id}}">Hayvan ata</button>
