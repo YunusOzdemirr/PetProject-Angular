@@ -12,25 +12,26 @@
                 data-bs-toggle="dropdown" aria-expanded="false">
                 {{user.name}}
             </a>
-            <ul class="dropdown-menu" *ngIf="!authService.isLoggedIn()" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                    <a class="dropdown-item" routerLink="/register-user">
+                    <a class="dropdown-item" *ngIf="!authService.isLoggedIn()" routerLink="/register-user">
                         Sign In
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" routerLink="/login-user">
+                    <a class="dropdown-item" *ngIf="!authService.isLoggedIn()" routerLink="/login-user">
                         Log In
                     </a>
                 </li>
+                <a class="dropdown-item" *ngIf="authService.isLoggedIn()" aria-labelledby="navbarDropdown"
+                    routerLink="/login-user" (click)="logout()">
+                    Log Out
+                </a>
             </ul>
-            <ul class="dropdown-menu" *ngIf="authService.isLoggedIn()" aria-labelledby="navbarDropdown">
-                <li>
-                    <a class="dropdown-item" routerLink="/login-user">
-                        Log Out
-                    </a>
-                </li>
-            </ul>
+
+
+
+
         </li>
         <div>
             <img class="card-img-top image" style="margin-right: 20px;"

@@ -23,9 +23,7 @@ export class NavbarComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private fb: FormBuilder
+    private router: Router
   ) {
     if (this.route.snapshot.params["id"]) {
       this.currentUserId =
@@ -51,38 +49,6 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  get name() {
-    return this.profileForm.get("name");
-  }
-  get photoURL() {
-    return this.profileForm.get("photoURL");
-  }
-
-  createForm(name: any) {
-    this.profileForm = this.fb.group({
-      name: [name, Validators.required],
-      photoURl: [name, Validators.required],
-      email: [name, Validators.required],
-      password: [name, Validators.required],
-    });
-  }
-
-  save(value: any) {
-    this.userService.updateCurrentUser(value).then(
-      (res) => {
-        console.log(res);
-      },
-      (err) => console.log(err)
-    );
-  }
-  getUserDetail() {
-    this.userService
-      .getUserById(this.currentUserId)
-      .subscribe((response: any) => {
-        this.user = response.data;
-        console.log(this.user.name);
-      });
-  }
   logout() {
     this.authService.doLogOut().then(
       (res) => {
