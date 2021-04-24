@@ -11,3 +11,8 @@
 .error {
     color: red;
 }
+p.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
